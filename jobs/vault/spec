@@ -11,6 +11,9 @@ templates:
   config/vault.conf.erb:  config/server.hcl
   ssl/certificate.pem: ssl/certificate.pem
   ssl/key.pem: ssl/key.pem
+  ssl/ca_certificate.pem: ssl/ca_certificate.pem
+  ssl/consul_certificate.pem: ssl/consul_certificate.pem
+  ssl/consul_key.pem: ssl/consul_key.pem
 properties:
   vault.listener.tcp.address:
     description: Address for TCP connection
