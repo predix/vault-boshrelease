@@ -58,7 +58,9 @@ backend "consul"{
   <% if p("vault.backend.consul.check_timeout", "").empty? == false %>check_timeout = "<%= p("vault.backend.consul.check_timeout") %>"<% end %>
   max_parallel = "<%= p("vault.backend.consul.max_parallel") %>"
   <% if consul_tls %>
-    <% if p("vault.backend.consul.tls.tls_skip_verify", "false") == true %>tls_skip_verify = true<% end %>
+    <% if p("vault.backend.consul.tls.skip_verify", "false") == true %>
+    tls_skip_verify = "true"
+    <% end %>
     <% if p("vault.backend.consul.tls.min_version", "").empty? == false %>tls_min_version = "<%= p("vault.backend.consul.tls.min_version") %>"<% end %>
     tls_ca_file = "/var/vcap/jobs/vault/ssl/ca_certificate.pem"
     tls_cert_file = "/var/vcap/jobs/vault/ssl/consul_certificate.pem"
