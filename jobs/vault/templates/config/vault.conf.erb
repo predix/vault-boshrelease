@@ -107,4 +107,5 @@ listener "tcp" {
  tls_cert_file = "/var/vcap/jobs/vault/ssl/certificate.pem"
  tls_key_file  = "/var/vcap/jobs/vault/ssl/key.pem"
  tls_min_version = "<%= p("vault.listener.tcp.tls.min_version") %>"
+ cluster_address = "<%= p("vault.listener.cluster.address") %>:<%= p("vault.listener.cluster.port") %>"
 }
