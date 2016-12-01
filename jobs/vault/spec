@@ -9,6 +9,7 @@ templates:
   helpers/ctl_setup.sh: helpers/ctl_setup.sh
   helpers/ctl_utils.sh: helpers/ctl_utils.sh
   config/vault.conf.erb:  config/server.hcl
+  config/syslog_forwarder.conf.erb:  config/syslog_forwarder.conf
   ssl/certificate.pem: ssl/certificate.pem
   ssl/key.pem: ssl/key.pem
   ssl/ca_certificate.pem: ssl/ca_certificate.pem
@@ -137,3 +138,14 @@ properties:
     description: AWS S3 endpoint
   vault.backend.s3.session_token:
     description: AWS session token
+
+  #
+  # Syslog configuration
+  #
+  vault.syslog.address:
+    description: Address of external syslog server where the audit messages should be forwarded
+  vault.syslog.port:
+    description: Port of external syslog server where the audit messages should be forwarded
+  vault.syslog.max_message_size:
+    description: Maximum message size to be sent
+    default: 4k

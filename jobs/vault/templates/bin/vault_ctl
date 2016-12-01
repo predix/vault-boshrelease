@@ -8,11 +8,19 @@ source /var/vcap/jobs/vault/helpers/ctl_setup.sh 'vault'
 
 export PORT=${PORT:-5000}
 export LANG=en_US.UTF-8
+CONFIG_DIR=/var/vcap/jobs/vault/config
 
 case $1 in
 
   start)
     pid_guard $PIDFILE $JOB_NAME
+
+    <% if p("vault.syslog.address", "").empty? == false %>
+    mkdir -p /var/vcap/sys/rsyslog/buffered
+    chown -R syslog:adm /var/vcap/sys/rsyslog/buffered
+    cp $CONFIG_DIR/syslog_forwarder.conf /etc/rsyslog.d/20-syslog_forwarder.conf
+    /usr/sbin/service rsyslog restart
+    <% end %>
 
     # store pid in $PIDFILE
     echo $$ > $PIDFILE
