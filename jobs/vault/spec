@@ -15,7 +15,14 @@ templates:
   ssl/ca_certificate.pem: ssl/ca_certificate.pem
   ssl/consul_certificate.pem: ssl/consul_certificate.pem
   ssl/consul_key.pem: ssl/consul_key.pem
+  bin/post-start.erb: bin/post-start
 properties:
+  # Expect that the unseal script is available on the vm either through different job
+  # from this bosh release or a different one. This is done because the way to get
+  # master keys will be specific to each deployment and the vault bosh release cannot
+  # be presceptive about that.
+  vault.unseal.script:
+    description: The script location to unseal vault
   vault.listener.tcp.address:
     description: Address for TCP connection
     default: 0.0.0.0

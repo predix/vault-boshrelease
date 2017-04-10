@@ -1,0 +1,30 @@
+#!/bin/bash
+
+set -e # exit immediately if a simple command exits with a non-zero status
+set -u # report the usage of uninitialized variables
+
+<% if_p("vault.unseal.script") do |unseal_script| %>
+  <% if unseal_script != "" %>
+    # Check if vault is inited
+    <% if_p("vault.listener.tcp.tls.certificate", "") do |cert| %>
+      <% if_p("vault.listener.tcp.tls.key", "") do |key| %>
+      <% if cert != "" and key != "" %>
+        schema="https"
+      <% else %>
+        schema="http"
+      <% end %>
+      <% end %>
+    <% end %>
+    # Verify that the vault instance is inited
+    vaultAddress=${schema}://<%= spec.address %>:<%= p("vault.listener.tcp.port") %>
+    set +e
+    VAULT_INITED=$(curl -k ${vaultAddress}/v1/sys/init | grep -c "\"initialized\":true")
+    set -e
+    if [ ${VAULT_INITED} -gt 0 ]; then
+      echo "Executing unseal script"
+      <%= unseal_script %> ${vaultAddress}
+    else
+      echo "Vault is not inited yet"
+    fi
+  <% end %>
+<% end %>
