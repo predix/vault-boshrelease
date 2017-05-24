@@ -48,9 +48,9 @@ properties:
   #
   # Telemetry configuration
   #
-  vault.telemetry.statsite_addr:
+  vault.telemetry.statsite_address:
     description: Address for statsite
-  vault.telemetry.statsd_addr:
+  vault.telemetry.statsd_address:
     description: Address for StatsD
   vault.telemetry.disable_hostname:
     description: Whether or not to prepend runtime telemetry with the machines hostname. This is a global option.
