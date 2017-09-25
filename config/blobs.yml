@@ -1,13 +1,12 @@
----
 jq/jq-linux64-1.5:
+  size: 3027945
   object_id: ec3d7d39-ae73-4b6c-99ef-50e19d89cea1
   sha: d8e36831c3c94bb58be34dd544f44a6c6cb88568
-  size: 3027945
-vault/vault_0.6.5_linux_amd64.zip:
-  object_id: e3aa6c69-a970-41f3-99db-f142dcb6ee3a
-  sha: e3748e13a8ba87bc539440236c3813d3a4ce4ef1
-  size: 13227925
 vault-broker/vault-broker:
+  size: 7802696
   object_id: 46cb47d4-ad85-40d3-b3c1-9f6c44894899
   sha: 9b99db6f8e53f4ba2c5d551a446304a4600e4e78
-  size: 7802696
+vault/vault_0.8.2_linux_amd64.zip:
+  size: 15021674
+  object_id: 9e70fb46-6176-43c7-471e-f955d9cf60ea
+  sha: 4a673ae32345cadf1ce457de6bfd4959c6aad740
